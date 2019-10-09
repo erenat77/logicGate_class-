@@ -1,3 +1,6 @@
+#When designing classes, 
+#it is very important to distinguish between those that have the IS-A relationship (which requires inheritance) and
+#those that have HAS-A relationships (with no inheritance)
 class LogicGate:
 
     def __init__(self,n):
@@ -103,7 +106,8 @@ class NotGate(UnaryGate):
         else:
             return 1
 
-
+#The two gate instances within each connector object will be referred to as the fromgate and the togate,
+#recognizing that data values will “flow” from the output of one gate into an input line of the next
 class Connector:
 
     def __init__(self, fgate, tgate):
