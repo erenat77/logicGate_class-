@@ -74,7 +74,48 @@ class OrGate(BinaryGate):
             return 1
         else:
             return 0
+class NandGate(BinaryGate):
 
+    def __init__(self,n):
+        super(NandGate,self).__init__(n)
+
+    def performGateLogic(self):
+
+        a = self.getPinA()
+        b = self.getPinB()
+        if a ==0 and b==0:
+            return 1
+        else:
+            return 0
+
+class NorGate(BinaryGate):
+
+    def __init__(self,n):
+        super(NorGate,self).__init__(n)
+
+    def performGateLogic(self):
+
+        a = self.getPinA()
+        b = self.getPinB()
+        if a==0 and b==0:
+            return 0
+        else:
+            return 1
+        
+class XorGate(BinaryGate):
+
+    def __init__(self,n):
+        super(XorGate,self).__init__(n)
+
+    def performGateLogic(self):
+
+        a = self.getPinA()
+        b = self.getPinB()
+        if (a==0 and b==1) or (a==1 and b==0):
+            return 1
+        else:
+            return 0
+        
 class UnaryGate(LogicGate):
 
     def __init__(self,n):
