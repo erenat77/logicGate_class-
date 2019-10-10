@@ -165,7 +165,7 @@ class Connector:
 
 class HalfAdder(BinaryGate):
     def __init__(self,n):
-        super(HalfAdder).__init__(n)
+        super(HalfAdder,self).__init__(n)
 
         self.bits, self.carry = None, None
         self.xor = XorGate('XO')
