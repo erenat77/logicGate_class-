@@ -162,3 +162,25 @@ class Connector:
 
     def getTo(self):
         return self.togate
+
+class HalfAdder(BinaryGate):
+    def __init__(self,n):
+        super(HalfAdder).__init__(n)
+
+        self.bits, self.carry = None, None
+        self.xor = XorGate('XO')
+        self.and_ = AndGate('A')
+
+    def performGateLogic(self):
+
+        a = self.getPinA()
+        b = self.getPinB()
+
+        self.xor.setNextPin(a)
+        self.xor.setNextPin(b)
+        self.and_.setNextPin(a)
+        self.and_.setNextPin(b)
+
+        self.bits = 1 if (self.xor.pinA==1 and self.xor.pinB==0) or (self.xor.pinA==0 and self.xor.pinB==1) else 0
+        self.carry = 1 if (self.and_.pinA==1 and self.and_.pinB ==1) else 0
+        return self.bits + self.carry
